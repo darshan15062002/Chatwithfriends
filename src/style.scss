@@ -1,3 +1,11 @@
+@mixin mobile{
+    @media screen and (max-width:480px){
+        @content
+    }
+}
+
+
+
 *{
     padding: 0;
     margin: 0;
@@ -75,18 +83,30 @@
     height: 80%;
     display: flex;
     overflow: hidden;
+    @include mobile{
+        width: 90%;
+    height: 80%;
+    }
     .sidebar{
         flex:1;
+        
         background: #363B4E;
+        position: relative;
         .navbar{
             display: flex;
             background: #262c3e;
             padding: 10px;
             color: #b7bedc;
+            @include mobile{
+                font-size: 12px;
+            }
             justify-content: space-between;
             align-items: center;
             .logo{
                 font-weight: bold;
+                @include mobile{
+                    display: none;
+                }
             }
             .user{
                 display: flex;
@@ -107,6 +127,11 @@
                     border: none;
                     color:white;
                     padding: 5px;
+                    @include mobile{
+                        position: absolute;
+                        bottom: 5px;
+                        right: 5px;
+                    }
                 }
             }
         }
@@ -114,10 +139,18 @@
             .searchForm{
                 border-bottom: 1px solid gray;
                 padding: 0 10px;
+                display: flex;
+                align-items: center;
+                img{
+                    height: 20px;
+                    width: 20px;
+                    cursor: pointer;
+                }
                 input{
                     border:none;
                     width: 100%;
-                    
+                    color: white;
+                    font-weight: bold;
                     background-color:transparent;
                     padding: 10px 0;
                     margin: 0;
@@ -141,12 +174,19 @@
                 &:hover{
                     background-color: #1c1f2a;
                 }
+                @include mobile{
+                    font-size: 12px;
+                }
 
                 img{
                     width: 50px;
                     height: 50px;
                     border-radius: 50%;
                     object-fit: cover;
+                    @include mobile{
+                      display: none;
+                      margin-bottom: 20px;
+                    }
                 }
 
             }
@@ -165,6 +205,9 @@
     .chat{
         flex:2;
         background: #d0c8e2;
+        @include mobile{
+flex: 3;          
+        }
 
         .chatInfo{
             display: flex;
@@ -173,6 +216,10 @@
             align-items: center;
             background:#5b6a97;
             padding: 0 20px;
+            color: white;
+            @include mobile{
+                font-size: 12px;
+            }
             span{
                 font-weight: bold;
             }
@@ -216,6 +263,10 @@
                     width: 40px;
                     border-radius: 50%;
                     object-fit: cover;
+                    @include mobile{
+                        width: 25px;
+                    height: 25px;
+                    }
 
                     }
                     span{
@@ -240,6 +291,10 @@
                         padding: 10px 20px;
                         border-radius:  0 10px 10px 10px;
                        max-width: max-content;
+                       @include mobile{
+                      font-size: 12px;
+                      padding: 7px 15px;
+                    }
                     }
                 }
                

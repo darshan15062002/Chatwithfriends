@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react'
 import {  collection, doc, getDoc, getDocs, query, serverTimestamp, setDoc, updateDoc, where } from "firebase/firestore";
 import { db } from '../firebase';
 import { AuthContext } from '../context/AuthContext';
+import search from '.././img/search-26242.png'
 
 const Search = () => {
   const [username ,setUserName]=useState()
@@ -23,9 +24,9 @@ setErr(true)
 
 }
 
-  const handleKey =(e)=>{
-    e.code ==="Enter" && handleSearch()
-  }
+  // const handleKey =(e)=>{
+  //   e.code ==="Enter" && handleSearch()
+  // }
 
 
   const handleSelect = async ()=>{
@@ -67,7 +68,8 @@ setErr(true)
   return (
     <div className='search'>
       <div className="searchForm">
-        <input type="text" placeholder='Find a user' value={username} onKeyDown={handleKey} onChange={(e)=>setUserName(e.target.value)}/>
+        <input type="text" placeholder='Find a user' value={username}  onChange={(e)=>setUserName(e.target.value)}/>
+        <img src={search} alt="#" onClick={handleSearch} />
       </div>
       {err && <span>User not found</span>}
       {user && <div className="userChat" onClick={handleSelect}>
